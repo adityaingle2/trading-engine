@@ -53,8 +53,5 @@ CodeCoverage/
 TestResult.xml
 nunit-*.xml
 
-# VSCode settings
-.vscode/settings.json
-
 # Legacy VS solution files
 *.sln
