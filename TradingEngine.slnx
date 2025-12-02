@@ -1,6 +1,5 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/TradingEngine.Core/TradingEngine.Core.csproj" />
-    <Project Path="src/TradingEngine.Models/TradingEngine.Models.csproj" />
   </Folder>
 </Solution>

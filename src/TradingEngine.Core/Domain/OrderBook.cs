@@ -1,4 +1,4 @@
-namespace TradingEngine.Models;
+namespace TradingEngine.Core.Domain;
 
 public class OrderBook
 {		
@@ -6,15 +6,10 @@ public class OrderBook
 	private readonly SortedDictionary<decimal, LinkedList<Order>> _asks = new(Comparer<decimal>.Default);	
 	private readonly Dictionary<Guid, (decimal price, LinkedListNode<Order> node)> _orderLookup = new(); 
 	public string TickerSymbol { get; } 
-	
-	private OrderBook(string tickerSymbol) 
+
+	public OrderBook(string tickerSymbol) 
 	{
 		TickerSymbol = tickerSymbol;
-	}
-
-	public static OrderBook Create(string tickerSymbol)
-	{
-		return new OrderBook(tickerSymbol);
 	}
 
 	public void AddOrder(Order order)
@@ -65,7 +60,6 @@ public class OrderBook
 			Quantity = quantity, 
 			Price = price.HasValue ? price.Value : entry.node.Value.Price, 
 			Timestamp = DateTime.UtcNow, 
-			LastUpdated = DateTime.UtcNow 
 		};
 
 		RemoveOrder(orderId);
@@ -87,7 +81,6 @@ public class OrderBook
 		}
 
 		entry.node.Value.Quantity -= fillQuantity;
-		entry.node.Value.LastUpdated = DateTime.UtcNow;
 	}
 
 	public decimal? BestBid => _bids.Count > 0 ? _bids.First().Key : null;
