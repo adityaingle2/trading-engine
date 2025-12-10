@@ -12,9 +12,9 @@ public class MatchingEngine
 
     public MatchingEngine(OrderBookManager manager, Channel<EngineMessage> channel, CancellationToken cancellationToken)
     {
-        _orderBookManager = manager;
-        _inputChannel = channel;
-        _cancellationToken = cancellationToken;
+      _orderBookManager = manager;
+      _inputChannel = channel;
+      _cancellationToken = cancellationToken;
     }
 
     public async Task RunAsync()
